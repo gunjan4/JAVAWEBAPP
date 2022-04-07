@@ -12,7 +12,7 @@ public class QueryProcessor {
             return "JavaWeb-GR";
         }
         if (query.toLowerCase().contains("which of the following numbers is the largest")) {
-            String[] numbers = query.toLowerCase().split(":")[1].split(", ");
+            String[] numbers = query.toLowerCase().split(":")[2].split(", ");
             int i = 0;
             for (String number : numbers) {
                 int parsed = Integer.parseInt(number.trim());
@@ -21,7 +21,10 @@ public class QueryProcessor {
             return String.valueOf(i);
         }
         if (query.toLowerCase().contains("plus")) {
-            return "JavaWeb-GR";
+            String[] words = query.split(" ");
+            int firstNumber = Integer.parseInt(words[words.length - 3]);
+            int secondNumber = Integer.parseInt(words[words.length - 1]);
+            return String.valueOf(firstNumber + secondNumber);
         }
         return "";
     }

@@ -32,11 +32,11 @@ public class QueryProcessorTest {
 
     @Test
     public void worksOutMaxNumber() throws Exception {
-        assertThat(queryProcessor.process("which of the following numbers is the largest: 2000, 2001, 2002, 2003"), is("2003"));
+        assertThat(queryProcessor.process("71ba53e0: which of the following numbers is the largest: 2000, 2001, 2002, 2003"), is("2003"));
     }
 
-//    @Test
-//    public void adds2Numbers() throws Exception {
-//        assertThat(queryProcessor.process("what is 20 plus 8"), is("28"));
-//    }
+    @Test
+    public void adds2Numbers() throws Exception {
+        assertThat(queryProcessor.process("71ba53e0: what is 20 plus 8"), is("28"));
+    }
 }

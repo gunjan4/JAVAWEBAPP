@@ -29,4 +29,14 @@ public class QueryProcessorTest {
     public void whatIsMyNameKnown() throws Exception {
         assertThat(queryProcessor.process("your name"), containsString("JavaWeb-GR"));
     }
+
+    @Test
+    public void addsThe2NumbersWithWhich() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 2000, 2001, 2002, 2003"), is("2003"));
+    }
+
+//    @Test
+//    public void addsThe2NumbersWithWhich() throws Exception {
+//        assertThat(queryProcessor.process("which of the following numbers is the largest: 2000, 2001, 2002, 2003"), is("2003"));
+//    }
 }

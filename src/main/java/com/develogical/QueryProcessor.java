@@ -13,6 +13,8 @@ public class QueryProcessor {
     private void setValuesForMap() {
         keyWordsAndAnswers.put("eiffel", "Paris");
         keyWordsAndAnswers.put("first elected as the prime minister", "2016");
+        keyWordsAndAnswers.put("james bond in the film dr no", "Sean Connery");
+        keyWordsAndAnswers.put("banana", "yellow");
     }
 
 
@@ -54,10 +56,9 @@ public class QueryProcessor {
                 }
             }
         }
-        String[] words = lowercaseQuery.split(" ");
-        for (String word : words) {
-            if (keyWordsAndAnswers.containsKey(word)) {
-                return keyWordsAndAnswers.get(word);
+        for (String keyWords : keyWordsAndAnswers.keySet()) {
+            if (lowercaseQuery.contains(keyWords.toLowerCase())) {
+                return keyWordsAndAnswers.get(keyWords);
             }
         }
         return "";

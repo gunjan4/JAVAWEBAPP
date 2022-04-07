@@ -40,6 +40,12 @@ public class QueryProcessor {
                 }
             }
         }
+        String[] words = lowercaseQuery.split(" ");
+        for (String word : words) {
+            if (keyWordsAndAnswers.containsKey(word)) {
+                return keyWordsAndAnswers.get(word);
+            }
+        }
         return "";
     }
 

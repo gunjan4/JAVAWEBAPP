@@ -1,6 +1,20 @@
 package com.develogical;
 
+import java.util.HashMap;
+
 public class QueryProcessor {
+    HashMap<String, String> keyWordsAndAnswers;
+    
+    QueryProcessor() {
+        keyWordsAndAnswers = new HashMap<>();
+        setValuesForMap();
+    }
+
+    private void setValuesForMap() {
+        keyWordsAndAnswers.put("eiffel", "Paris");
+        keyWordsAndAnswers.put("first elected as the prime minister", "2016");
+    }
+
 
     public String process(String query) {
         String lowercaseQuery = query.toLowerCase();

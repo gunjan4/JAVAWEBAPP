@@ -27,6 +27,6 @@ public class QueryProcessorTest {
 
     @Test
     public void whatIsMyNameKnown() throws Exception {
-        assertThat(queryProcessor.process("my name"), containsString("JavaWeb-GR"));
+        assertThat(queryProcessor.process("your name"), containsString("JavaWeb-GR"));
     }
 }

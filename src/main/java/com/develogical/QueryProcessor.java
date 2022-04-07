@@ -48,6 +48,12 @@ public class QueryProcessor {
             int secondNumber = Integer.parseInt(words[words.length - 1]);
             return String.valueOf(firstNumber * secondNumber);
         }
+        if (lowercaseQuery.contains("minus")) {
+            String[] words = query.split(" ");
+            int firstNumber = Integer.parseInt(words[words.length - 3]);
+            int secondNumber = Integer.parseInt(words[words.length - 1]);
+            return String.valueOf(firstNumber - secondNumber);
+        }
         if (lowercaseQuery.contains("which of the following numbers is both a square and a cube")) {
             int[] numbers = parseInts(lowercaseQuery.split(":")[2]);
             for (int number : numbers) {

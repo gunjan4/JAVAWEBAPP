@@ -27,6 +27,12 @@ public class QueryProcessor {
             int secondNumber = Integer.parseInt(words[words.length - 1]);
             return String.valueOf(firstNumber + secondNumber);
         }
+        if (lowercaseQuery.contains("multiplied")) {
+            String[] words = query.split(" ");
+            int firstNumber = Integer.parseInt(words[words.length - 4]);
+            int secondNumber = Integer.parseInt(words[words.length - 1]);
+            return String.valueOf(firstNumber * secondNumber);
+        }
         return "";
     }
 }

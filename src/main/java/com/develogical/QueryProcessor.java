@@ -62,12 +62,27 @@ public class QueryProcessor {
                 }
             }
         }
+        if (lowercaseQuery.contains("fibonacci sequence")) {
+            String[] words = query.split(" ");
+            int number = Integer.parseInt(words[4].substring(0, words[4].length()-2));
+            return String.valueOf(fibonacciSequence(number));
+        }
         for (String keyWords : keyWordsAndAnswers.keySet()) {
             if (lowercaseQuery.contains(keyWords.toLowerCase())) {
                 return keyWordsAndAnswers.get(keyWords);
             }
         }
         return "";
+    }
+
+    private int fibonacciSequence(int number) {
+        int n1 = 1, n2 = 1, n3 = 0, i;
+        for (i = 2; i < number; ++i) {
+            n3 = n1 + n2;
+            n1 = n2;
+            n2 = n3;
+        }
+        return n3;
     }
 
     private int[] parseInts(String commaSeparatedNumbers) {

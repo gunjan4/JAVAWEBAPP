@@ -33,6 +33,28 @@ public class QueryProcessor {
             int secondNumber = Integer.parseInt(words[words.length - 1]);
             return String.valueOf(firstNumber * secondNumber);
         }
+        if (lowercaseQuery.contains("which of the following numbers is both a square and a cube")) {
+            String[] numbers = lowercaseQuery.split(":")[2].split(", ");
+            for (String numberAsString : numbers) {
+                double number = Double.parseDouble(numberAsString.trim());
+                if (checkSquare(number) && checkCube(number)) {
+                    return numberAsString.trim();
+                }
+            }
+        }
+
+
+
         return "";
+    }
+
+    public boolean checkSquare(double i) {
+        double sq = Math.sqrt(i);
+        return ((sq - Math.floor(sq)) == 0);
+    }
+
+    public boolean checkCube(double i) {
+        double cubeRoot = Math.cbrt(i);
+        return Math.round(cubeRoot) == cubeRoot;
     }
 }

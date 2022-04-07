@@ -45,6 +45,8 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("71ba53e0: what is 20 multiplied by 17"), is("340"));
     }
 
-//    0which%20of%20the%20following%20numbers%20is%20both%20a%20square%20and%20a%20cube:%201156,%2086
-
+    @Test
+    public void squareAndCubeQuery() throws Exception {
+        assertThat(queryProcessor.process("71ba53e0: which of the following numbers is both a square and a cube: 64, 86"), is("64"));
+    }
 }

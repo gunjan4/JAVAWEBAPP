@@ -11,6 +11,18 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("your name")) {
             return "JavaWeb-GR";
         }
+        if (query.toLowerCase().contains("which of the following numbers is the largest")) {
+            String[] numbers = query.toLowerCase().split(":")[1].split(", ");
+            int i = 0;
+            for (String number : numbers) {
+                int parsed = Integer.parseInt(number.trim());
+                i = Math.max(i, parsed);
+            }
+            return String.valueOf(i);
+        }
+        if (query.toLowerCase().contains("plus")) {
+            return "JavaWeb-GR";
+        }
         return "";
     }
 }

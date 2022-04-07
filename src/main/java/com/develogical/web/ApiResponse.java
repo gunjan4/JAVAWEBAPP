@@ -13,6 +13,9 @@ public class ApiResponse {
     }
 
     public void writeTo(HttpServletResponse resp) throws IOException {
+        if (resp.equals("")) {
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
         resp.setContentType("text/plain");
         PrintWriter writer = resp.getWriter();
         writer.println(answer);

@@ -13,11 +13,10 @@ public class QueryProcessor {
             return "JavaWeb-GR";
         }
         if (lowercaseQuery.contains("which of the following numbers is the largest")) {
-            String[] numbers = lowercaseQuery.split(":")[2].split(", ");
+            int[] numbers = parseInts(lowercaseQuery.split(":")[2]);
             int largestNumber = Integer.MIN_VALUE;
-            for (String number : numbers) {
-                int parsed = Integer.parseInt(number.trim());
-                largestNumber = Math.max(largestNumber, parsed);
+            for (int number : numbers) {
+                largestNumber = Math.max(largestNumber, number);
             }
             return String.valueOf(largestNumber);
         }
@@ -34,18 +33,23 @@ public class QueryProcessor {
             return String.valueOf(firstNumber * secondNumber);
         }
         if (lowercaseQuery.contains("which of the following numbers is both a square and a cube")) {
-            String[] numbers = lowercaseQuery.split(":")[2].split(", ");
-            for (String numberAsString : numbers) {
-                double number = Double.parseDouble(numberAsString.trim());
+            int[] numbers = parseInts(lowercaseQuery.split(":")[2]);
+            for (int number : numbers) {
                 if (checkSquare(number) && checkCube(number)) {
-                    return numberAsString.trim();
+                    return String.valueOf(number);
                 }
             }
         }
-
-
-
         return "";
+    }
+
+    private int[] parseInts(String commaSeparatedNumbers) {
+        String[] numbersAsStrings = commaSeparatedNumbers.split(", ");
+        int[] numbers = new int[numbersAsStrings.length];
+        for (int i = 0; i < numbersAsStrings.length; i++) {
+            numbers[i] = Integer.parseInt(numbersAsStrings[i].trim());
+        }
+        return numbers;
     }
 
     public boolean checkSquare(double i) {
